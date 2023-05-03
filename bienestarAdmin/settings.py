@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
     'Users',
     'rest_framework',
+    'coreapi',
     'corsheaders',
 ]
 
@@ -52,6 +53,10 @@ REST_FRAMEWORK = {
 }
 """
 
+#Legacy CoreAPI Schemas Docs - Documentation Api
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
 
 
 TEMPLATES = [
