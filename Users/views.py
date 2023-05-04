@@ -7,6 +7,9 @@ from django.contrib.auth import authenticate, login, logout
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
 
 class CustomUserPost(APIView):
     permission_classes = (AllowAny,)
@@ -19,7 +22,7 @@ class CustomUserPost(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CustomUsersList(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAdminUser,)
 
     def get(self, request):
         users = CustomUser.objects.all()
@@ -27,7 +30,7 @@ class CustomUsersList(APIView):
         return Response(serializer.data)
 
 class CustomUserDetail(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAdminUser,)
 
     def get_object(self, pk):
         try:
@@ -53,7 +56,6 @@ class CustomUserDetail(APIView):
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
 class CustomUserLogin(APIView):
     def post(self, request):
         email = request.data.get('email')
@@ -68,9 +70,12 @@ class CustomUserLogin(APIView):
             })
         return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
 
-
 class CustomUserLogout(APIView):
     permission_classes = (IsAuthenticated,)
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
     def post(self, request):
         logout(request)

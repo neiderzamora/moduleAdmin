@@ -45,13 +45,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "bienestarAdmin.urls"
-"""
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-"""
 
 #Legacy CoreAPI Schemas Docs - Documentation Api
 REST_FRAMEWORK = {
