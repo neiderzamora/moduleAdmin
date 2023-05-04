@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('Users.urls')),
+    path('api/', include('Events.urls')),
     path('', TemplateView.as_view(template_name='index.html')),
     path('docs/', include_docs_urls(title='API_UCC'))
 ]
