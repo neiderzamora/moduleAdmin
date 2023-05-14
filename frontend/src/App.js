@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router";
 
 function App() {
   return (
+    
     <>
     <Routes>
       <Route path="/" element={<Home/>}>
@@ -19,7 +20,11 @@ function App() {
       <Route path="*" element={<Error/>}/>
       </Route>
     </Routes>
+    
+    {/* Esto para que aparezca de primeras el login */}
+    <Login></Login>
     </>
+    
   );
 }
 
