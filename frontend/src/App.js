@@ -20,9 +20,9 @@ function App() {
       <Route path="*" element={<Error/>}/>
       </Route>
     </Routes>
-    
+
     {/* Esto para que aparezca de primeras el login */}
-    <Login></Login>
+    {/* <Login></Login> */}
     </>
     
   );
