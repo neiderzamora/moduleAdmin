@@ -22,7 +22,7 @@ const Login = () => {
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
       // redirigir a la página de inicio de sesión exitoso
-      navigate("/registro");
+      navigate("/perfil");
     } catch (error) {
       //Para verificar si el correo no existe
       if (error.response && error.response.status === 404) {
