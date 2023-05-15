@@ -1,6 +1,7 @@
 import Error from "./components/index/Error";
 import Home from "./components/index/Home";
 import Login from "./components/index/Login";
+import Perfil from "./components/index/Perfil";
 import Register_form from "./components/index/Register_form";
 import Sign_in from "./components/index/Sign_in";
 import Users from "./components/index/Users";
@@ -17,6 +18,7 @@ function App() {
       <Route path="sign" element={<Sign_in/>}/>
       <Route path="registro" element={<Register_form/>}/>
       <Route path="iniciar-sesion" element={<Login/>}/>
+      <Route path="perfil" element={<Perfil/>}/>
       <Route path="*" element={<Error/>}/>
       </Route>
     </Routes>
