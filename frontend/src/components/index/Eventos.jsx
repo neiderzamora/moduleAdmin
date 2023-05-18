@@ -32,7 +32,7 @@ const Eventos = () => {
       });
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
-      navigate("/perfil");
+      navigate("/list-eventos");
       console.log(response.data);
 
     } catch (error) {
@@ -47,6 +47,16 @@ const Eventos = () => {
               action="#"
               method="POST">
           <div className="mb-4">
+            <div className='flex items-end justify-end'>
+            <button
+              type="submit"
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline"
+              onClick={() => navigate("/perfil")}
+            >
+          X
+        </button>
+            </div>
+         
             <label
               htmlFor="title"
               className="block text-gray-700 font-bold mb-2"
@@ -121,14 +131,14 @@ const Eventos = () => {
           onChange={(event) => setHour(event.target.value)}
         />
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-between justify-center">
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          /* onClick={() => navigate("/perfil")} */
         >
           Enviar
         </button>
+        
       </div>
     </form>
     </div>

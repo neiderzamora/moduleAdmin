@@ -15,9 +15,8 @@ import { useTable, usePagination } from "react-table";
 import { useNavigate } from "react-router";
 
 const Perfil = () => {
+  const navigate = useNavigate();
 
-  /* const navigates = useNavigate();
-  navigates("/iniciar-sesion"); */
 
   /* Datos random, se supone aqui va info de los estudiantes que se registran, obvio despues se manda con axios */
     const data = useMemo(
@@ -199,9 +198,19 @@ const Perfil = () => {
                 <li>
                   <button
                     className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white"
+                    onClick={() => navigate("/eventos")}
                   >
                     <RiDashboardLine />
-                    Dashboard
+                    Eventos
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white"
+                    onClick={() => navigate("/list-eventos")}
+                  >
+                    <RiChatHistoryLine />
+                    Lista Eventos
                   </button>
                 </li>
                 <li>
@@ -212,18 +221,11 @@ const Perfil = () => {
                     Perfil
                   </button>
                 </li>
-                <li>
-                  <button
-                    className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white"
-                  >
-                    <RiChatHistoryLine />
-                    Historial
-                  </button>
-                </li>
+                
                 <li>                  
                   <button                    
                     className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white"
-                    /* onClick={() => navigates("/iniciar-sesion")} */
+                    onClick={() => navigate("/")}
                   >
                     <RiLogoutBoxLine />
                     Salir 

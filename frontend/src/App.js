@@ -5,6 +5,7 @@ import Login from "./components/index/Login";
 import Perfil from "./components/index/Perfil";
 import Register_form from "./components/index/Register_form";
 import Sign_in from "./components/index/Sign_in";
+import VistaEventos from "./components/index/VistaEventos";
 import Users from "./components/index/Users";
 
 import { Route, Routes } from "react-router";
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<Login/>}/>
       <Route path="perfil" element={<Perfil/>}/>
       <Route path="eventos" element={<Eventos/>}/>     
+      <Route path="list-eventos" element={<VistaEventos/>}/>     
       <Route path="/*" element={<Error/>}/>
     </Routes>
     </>
