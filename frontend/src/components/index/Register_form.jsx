@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import Select from "react-select";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
 const Register_form = () => {
 
+  const navigate = useNavigate();
   
   const [email, setEmail] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -29,58 +29,18 @@ const Register_form = () => {
       });
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
+      console.log("Exito")
       // redirigir a la página de inicio de sesión exitoso
-      //navigate("/iniciar-sesion");
+      navigate("/");
     } catch (error) {
-      //Para verificar si el correo no existe     
+      //Para verificar si el correo no existe 
+        console.log("Error mi ciela")    
         console.error(error);
       
     }
   };
-  
-  /* Select facultad y sus Estilos */
-  const customStyles = {
-    control: (base, state) => ({
-      ...base,
-      backgroundColor: "#1D2432",
-      color: "white",
-      borderColor: state.isFocused ? "#55B7C9" : "#4B5563",
-      boxShadow: state.isFocused ? "0 0 0 1px #55B7C9" : "none",
-      "&:hover": {
-        borderColor: state.isFocused ? "#55B7C9" : "#4B5563",
-      },
-    }),
-    option: (base, state) => ({
-      ...base,
-      backgroundColor: state.isFocused ? "#55B7C9" : "transparent",
-      color: state.isFocused ? "white" : "white",
-    }),
-    menu: (base) => ({
-      ...base,
-      backgroundColor: "#1D2432",
-      color: "white",
-    }),
-    singleValue: (base) => ({
-      ...base,
-      color: "white",
-    }),
-  };
-  
-  const facultad = [
-    { label: "Ingeniería de Sistemas" },
-    { label: "Ingeniería Civil"},
-    { label: "Derecho"},
-    { label: "Psicología"},
-    { label: "Medicina Veterinaria y Zootecnia"},
-    { label: "Contaduría Pública"},
-    { label: "Enfermeria Profesional"},
-    { label: "Medicina"},
-    { label: "Odontología"},
-  ];
 
-
-  const navigate = useNavigate();
-  navigate("/iniciar-sesion");
+  
 
   return (
     <div className="bg-[#111827] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -171,17 +131,29 @@ const Register_form = () => {
               Facultad
             </label>
             <div className="mt-2">
-            <Select
-            className="text-white"
-            defaultValue={{ label: "Seleccione su facultad", value: "Default" }}
-            options={facultad}
-            styles={customStyles}
-            id="faculty"
-            name="faculty"
-            autoComplete="faculty-name"   
-            value={faculty}
-            onChange={(event) => setFaculty(event.target.value)}        
-          />
+            <select
+                id="faculty"
+                name="faculty"
+                autoComplete="faculty-name"
+                className="block w-full py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
+                value={faculty}
+                onChange={(event) => setFaculty(event.target.value)}
+              >
+                <option value="" disabled>
+                  Seleccione su facultad
+                </option>
+                <option value="Ingenieria_sistemas">Ingeniería de Sistemas</option>
+                <option value="Ingenieria_civil">Ingeniería Civil</option>
+                <option value="Derecho">Derecho</option>
+                <option value="Psicologia">Psicología</option>
+                <option value="Veterinaria">
+                  Medicina Veterinaria y Zootecnia
+                </option>
+                <option value="Contaduria_publica">Contaduría Pública</option>
+                <option value="Enfermeria_profesional">Enfermeria Profesional</option>
+                <option value="Medicina">Medicina</option>
+                <option value="Odontología">Odontología</option>
+              </select>
                 
             </div>
           </div>
@@ -270,7 +242,6 @@ const Register_form = () => {
         </p>
         <button
           className="text-lg pl-3 text-[#55B7C9] mt-2 hover:scale-[1.06] ease-in-out transition-all"
-          onClick={() => navigate("/registro")}
           
         >
           Iniciar sesión
