@@ -133,7 +133,7 @@ const Perfil = () => {
                     onClick={() => navigate("/eventos")}
                   >
                     <RiDashboardLine />
-                    Eventos
+                    Crear Evento
                   </button>
                 </li>
                 <li>
