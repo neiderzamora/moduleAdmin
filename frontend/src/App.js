@@ -1,6 +1,7 @@
 import Error from "./components/index/Error";
 import Eventos from "./components/index/Eventos";
 import Login from "./components/index/Login";
+import Panel from "./components/index/Panel";
 import Perfil from "./components/index/Perfil";
 import Register_form from "./components/index/Register_form";
 import VistaEventos from "./components/index/VistaEventos";
@@ -16,7 +17,9 @@ function App() {
       <Route path="perfil" element={<Perfil/>}/>
       <Route path="eventos" element={<Eventos/>}/>     
       <Route path="list-eventos" element={<VistaEventos/>}/>     
+      <Route path="panel" element={<Panel/>}/>
       <Route path="/*" element={<Error/>}/>
+
     </Routes>
     </>
     

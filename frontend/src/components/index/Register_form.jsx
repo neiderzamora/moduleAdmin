@@ -34,7 +34,7 @@ const Register_form = () => {
       navigate("/");
     } catch (error) {
       //Para verificar si el correo no existe 
-        console.log("Error mi ciela")    
+        console.log("Error")    
         console.error(error);
       
     }

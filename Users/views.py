@@ -22,7 +22,7 @@ class CustomUserPost(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CustomUsersList(APIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
 
     def get(self, request):
         users = CustomUser.objects.all()
@@ -30,7 +30,7 @@ class CustomUsersList(APIView):
         return Response(serializer.data)
 
 class CustomUserDetail(APIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
 
     def get_object(self, pk):
         try:

@@ -17,6 +17,20 @@ import { useNavigate } from "react-router";
 const Perfil = () => {
   const navigate = useNavigate();
 
+  /* const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('URL_DE_TU_API');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+    }
+  };
+
+  useMemo(() => {
+    fetchData();
+  }, []); */
 
   /* Datos random, se supone aqui va info de los estudiantes que se registran, obvio despues se manda con axios */
     const data = useMemo(
@@ -28,89 +42,7 @@ const Perfil = () => {
             apellido: "Martinez",
             facultad: "Derecho",
             telefono: "3102890374",
-          },  
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "Clemencio",
-            facultad: "Sistemas",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "Anacleto",
-            facultad: "Odontologia",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-          {
-            id: "542387",
-            correo: "alguien.algo@campusucc.edu.co",
-            nombre: "Pepito",
-            apellido: "",
-            facultad: "",
-            telefono: "3102890374",
-          }, 
-           
-          
+          },
         ],
         []
       );
@@ -215,10 +147,10 @@ const Perfil = () => {
                 </li>
                 <li>
                   <button
-                    className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white"
+                    className="flex items-center gap-2 hover:bg-[#1F2937] transition-colors mt-5 p-3 hover:font-semibold rounded-lg text-lg text-white" onClick={() => navigate("/panel")}
                   >
                     <RiUser6Line />
-                    Perfil
+                    Usuarios
                   </button>
                 </li>
                 
@@ -276,7 +208,7 @@ const Perfil = () => {
                   <button
                     className="flex items-center gap-1 text-white"
                   >
-                    Sara del Real
+                    User
                     <RiArrowDownSLine />
                   </button>
                 </li>
