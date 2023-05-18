@@ -32,6 +32,7 @@ const Eventos = () => {
       });
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
+      navigate("/perfil");
       console.log(response.data);
 
     } catch (error) {
