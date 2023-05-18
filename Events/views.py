@@ -6,7 +6,7 @@ from .serializers import EventSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 class EventList(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     def get(self, request):
         # Listar todos los eventos
         events = Event.objects.all()
@@ -15,7 +15,7 @@ class EventList(APIView):
 
 
 class EventPost(APIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
     def post(self, request):
         # Crear un nuevo evento
         serializer = EventSerializer(data=request.data)
@@ -25,7 +25,7 @@ class EventPost(APIView):
         return Response(serializer.errors, status=400)
 
 class EventDetail(APIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
     def get_object(self, pk):
         # Recuperar un evento individual
         try:

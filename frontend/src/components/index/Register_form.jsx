@@ -2,12 +2,42 @@ import React from "react";
 import { useState } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const Register_form = () => {
 
-  const navigate = useNavigate();
-  navigate("/iniciar-sesion");
+  
+  const [email, setEmail] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [faculty, setFaculty] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [idU, setIdU] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/register_user/", {
+        email,
+        first_name,
+        last_name,
+        faculty,
+        phone_number,
+        idU,
+        password,
+      });
+      localStorage.setItem("access_token", response.data.access);
+      localStorage.setItem("refresh_token", response.data.refresh);
+      // redirigir a la página de inicio de sesión exitoso
+      //navigate("/iniciar-sesion");
+    } catch (error) {
+      //Para verificar si el correo no existe     
+        console.error(error);
+      
+    }
+  };
+  
   /* Select facultad y sus Estilos */
   const customStyles = {
     control: (base, state) => ({
@@ -37,18 +67,20 @@ const Register_form = () => {
   };
   
   const facultad = [
-    { label: "Ingeniería de Sistemas", value: "Ingeniería_Sistemas" },
-    { label: "Ingeniería Civil", value: "Ingeniería_Civil" },
-    { label: "Derecho", value: "Derecho" },
-    { label: "Psicología", value: "Psicología" },
-    { label: "Medicina Veterinaria y Zootecnia", value: "Veterinaria" },
-    { label: "Contaduría Pública", value: "Contaduria_Publica" },
-    { label: "Enfermeria Profesional", value: "Enfermeria_Profesional" },
-    { label: "Medicina", value: "Medicina" },
-    { label: "Odontología", value: "Odontologia" },
+    { label: "Ingeniería de Sistemas" },
+    { label: "Ingeniería Civil"},
+    { label: "Derecho"},
+    { label: "Psicología"},
+    { label: "Medicina Veterinaria y Zootecnia"},
+    { label: "Contaduría Pública"},
+    { label: "Enfermeria Profesional"},
+    { label: "Medicina"},
+    { label: "Odontología"},
   ];
 
 
+  const navigate = useNavigate();
+  navigate("/iniciar-sesion");
 
   return (
     <div className="bg-[#111827] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -64,7 +96,7 @@ const Register_form = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
           <div>
             <label
               htmlFor="email"
@@ -81,6 +113,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su correo institucional"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
               />
             </div>
           </div>
@@ -101,6 +135,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su nombre completo"
+                value={first_name}
+                onChange={(event) => setFirstName(event.target.value)}
               />
             </div>
           </div>
@@ -121,6 +157,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su apellido completo"
+                value={last_name}
+                onChange={(event) => setLastName(event.target.value)}
               />
             </div>
           </div>
@@ -140,7 +178,9 @@ const Register_form = () => {
             styles={customStyles}
             id="faculty"
             name="faculty"
-            autoComplete="faculty-name"
+            autoComplete="faculty-name"   
+            value={faculty}
+            onChange={(event) => setFaculty(event.target.value)}        
           />
                 
             </div>
@@ -162,6 +202,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su número télefonico"
+                value={phone_number}
+                onChange={(event) => setPhoneNumber(event.target.value)} 
               />
             </div>
           </div>
@@ -182,6 +224,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su ID"
+                value={idU}
+                onChange={(event) => setIdU(event.target.value)} 
               />
             </div>
           </div>
@@ -206,6 +250,8 @@ const Register_form = () => {
                 required
                 className="block w-full  py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 border text-white border-gray-500 rounded-xl p-3 mt-1 bg-[#1D2432]"
                 placeholder="Ingrese su contraseña"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)} 
               />
             </div>
           </div>

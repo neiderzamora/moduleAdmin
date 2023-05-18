@@ -18,10 +18,9 @@ const Eventos = () => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    // Aquí podrías agregar la lógica para enviar los datos a un servidor o almacenarlos localmente.
-    const form = event.target;
-    const formData = new FormData(form);
 
+/*     const form = event.target;
+    const formData = new FormData(form); */
     
     try {
       const response = await axios.post("http://127.0.0.1:8000/api/event/", {
@@ -31,7 +30,8 @@ const Eventos = () => {
         hour,
         location,
       });
-
+      localStorage.setItem("access_token", response.data.access);
+      localStorage.setItem("refresh_token", response.data.refresh);
       console.log(response.data);
 
     } catch (error) {
@@ -55,6 +55,7 @@ const Eventos = () => {
             <input
               type="text"
               id="title"
+              required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
@@ -69,6 +70,7 @@ const Eventos = () => {
             </label>
             <textarea
               id="description"
+              required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
@@ -82,11 +84,13 @@ const Eventos = () => {
             className="bg-white text-gray-900 rounded-md p-4 shadow"
             onChange={(newDate) => setDate(newDate)}
             value={date}
+            
           />
           </div>
           <div className="mb-4">
             <label
               htmlFor="location"
+              required
               className="block text-gray-700 font-bold mb-2"
             >
               Localización
@@ -94,6 +98,7 @@ const Eventos = () => {
             <input
               type="text"
               id="location"
+              required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={location}
               onChange={(event) => setLocation(event.target.value)}
