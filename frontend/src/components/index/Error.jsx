@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 const Error = () => {
   return (
     <>
+    <Helmet>
+        <title>Página no encontrada | UCC</title>
+      </Helmet>
       <section className="w-full h-screen lg:p-100 bg-gray-900 " >
         <div className="relative items-center w-full h-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl lg:py-24">
           <div className="flex w-full h-full mx-auto text-left">
