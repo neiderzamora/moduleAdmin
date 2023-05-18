@@ -21,12 +21,12 @@ const Eventos = () => {
 
 /*     const form = event.target;
     const formData = new FormData(form); */
-    
+
     try {
       const response = await axios.post("http://127.0.0.1:8000/api/event/", {
         title,
         description,
-        date,
+        date: date.toISOString().split('T')[0],
         hour,
         location,
       });
@@ -84,7 +84,11 @@ const Eventos = () => {
             className="bg-white text-gray-900 rounded-md p-4 shadow"
             onChange={(newDate) => setDate(newDate)}
             value={date}
-            
+            /* id="date"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={date}
+              onChange={(event) => setDate(event.target.value)} */
           />
           </div>
           <div className="mb-4">
@@ -120,7 +124,7 @@ const Eventos = () => {
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          //onClick={() => navigate("/perfil")}
+          onClick={() => navigate("/perfil")}
         >
           Enviar
         </button>

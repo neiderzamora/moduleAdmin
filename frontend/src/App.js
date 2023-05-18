@@ -7,7 +7,7 @@ import Register_form from "./components/index/Register_form";
 import Sign_in from "./components/index/Sign_in";
 import Users from "./components/index/Users";
 
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 {/**/}
 
 function App() {

@@ -3,8 +3,8 @@ from .models import Event
 from datetime import datetime
 
 class EventSerializer(serializers.ModelSerializer):
-    date = serializers.DateField(format='%d-%m-%Y')
-    hour = serializers.TimeField(format='%H:%M:%S')
+    """ date = serializers.DateField(format='%d-%m-%Y')
+    hour = serializers.TimeField(format='%H:%M:%S') """
     date_created = serializers.DateTimeField(format='%d-%m-%Y %H:%M:%S', read_only=True)
     is_upcoming = serializers.SerializerMethodField(read_only=True)
 
